@@ -5,5 +5,6 @@ export const withAllUsers = withData(() => {
   const handler = Meteor.subscribe("allUsers");
   const isLoading = !handler.ready();
   const allUsers = Meteor.users.find().fetch();
-  return { isLoading, allUsers };
+  const currentUser = Meteor.user().username;
+  return { isLoading, allUsers, currentUser };
 });
